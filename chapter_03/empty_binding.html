@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Empty Binding</title>
+</head>
+
+<style>
+
+</style>
+
+<body>
+
+
+
+
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script>
+        const numbers = [6, 2, 5, 7, 9];
+
+        const barScale = d3.scaleLinear();
+
+        d3.select("body")
+            .append("div")
+            .selectAll("p")
+            .data(numbers)
+            .enter()
+            .append("p")
+            .text(function (d, i) {
+                return "Item " + (i + 1) + ": " + d;
+            })
+            .style("font-size", function (d, i) {
+                return ((i + 2) * 5) + "pt";
+            })
+    </script>
+</body>
+
+</html>

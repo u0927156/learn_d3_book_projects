@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>What</title>
+</head>
+
+<style>
+    svg {
+        border: solid 1px lightgray;
+        background-color: hsla(240, 100%, 50%, 0.2);
+    }
+</style>
+
+<body>
+    <h2>SVG viewport</h2>
+    <svg width="400" height="300">
+        <circle r="25"></circle>
+        <circle cx="250" cy="200" r="50"></circle>
+        <circle cx="400" cy="300" r="50"></circle>
+
+    </svg>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"
+        integrity="sha512-M7nHCiNUOwFt6Us3r8alutZLm9qMt4s9951uo8jqO4UwJ1hziseL6O3ndFyigx6+LREfZqnhHxYjKRJ8ZQ69DQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+
+        const svg = d3.select("body").append("svg").attr("width", 400).attr("height", 300);
+
+        svg.append("circle").attr("r", 25)
+        svg.append("circle").attr("cx", 250).attr("cy", 200).attr("r", 50)
+        svg.append("circle").attr("cx", 50).attr("cy", 50).attr("r", 20)
+        svg.append("circle").attr("cx", 400).attr("cy", 300).attr("r", 50)
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>What</title>
+</head>
+
+<style>
+
+</style>
+
+<body>
+
+    <p>See results in the console log.</p>
+
+    <div id="section">
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+    </div>
+    <p>Paragraph 3</p>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"
+        integrity="sha512-M7nHCiNUOwFt6Us3r8alutZLm9qMt4s9951uo8jqO4UwJ1hziseL6O3ndFyigx6+LREfZqnhHxYjKRJ8ZQ69DQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        const div = d3.select("#section");
+
+        const domDiv = div.node();
+
+        const firstP = d3.select("p");
+
+        const allParagraphs = d3.selectAll("p");
+
+        const allPDom = allParagraphs.nodes()
+
+        const sectionParagraphs = d3.select("div").selectAll("p");
+
+        div.style('border', 'solid blue 2px');
+
+        firstP.text("This is paragraph zero")
+
+        allParagraphs.style('font-weight', 'bold')
+
+        d3.select('.first')
+            .attr('title', 'Tooltip')
+            .style("font-variant", 'small-caps')
+            .html('This is a <b>bold</b> paragraph.')
+
+        d3.select("body").append("h2").text("Footer")
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>What</title>
+</head>
+
+<style>
+
+</style>
+
+<body>
+
+    <div id="section">
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"
+        integrity="sha512-M7nHCiNUOwFt6Us3r8alutZLm9qMt4s9951uo8jqO4UwJ1hziseL6O3ndFyigx6+LREfZqnhHxYjKRJ8ZQ69DQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        const numbers = [6, 2, 5, 7, 9];
+
+        const selection = d3.select("#section")
+            .selectAll("p")
+            .data(numbers);
+
+        selection.text(d => d); // binds to existing paragraphs (just an update)
+
+        const newSelection = selection.enter(); // Binds data to a selection of placeholders
+
+        newSelection.append("p")
+            .text(d => d); // binds to new paragraphs (enter)
+
+    </script>
+</body>
+
+</html>

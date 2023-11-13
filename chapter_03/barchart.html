@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .bar_chart {
+        border: solid 1px gray;
+        position: relative;
+        width: 800px;
+    }
+
+    .bar {
+        height: 20px;
+        background-color: orange;
+        position: absolute;
+        text-align: right;
+        padding: 0 5px;
+        font-family: sans-serif;
+        font-size: 9pt;
+        left: 100px;
+    }
+
+    .entry {
+        height: 20px;
+        top: 1px;
+    }
+
+    .label {
+        padding: 4px 5px;
+        font-family: sans-serif;
+        font-size: 9pt;
+        position: absolute;
+        height: 20px;
+    }
+
+    .category {
+        text-align: right;
+        width: 80px;
+    }
+
+    .value {
+        text-align: left;
+    }
+</style>
+
+<body>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script>
+
+
+        const distances = [
+            { name: "Mercury", distance: 0.387 },
+            { name: "Venus", distance: 0.723 },
+            { name: "Earth", distance: 1 },
+            { name: "Mars", distance: 1.52 },
+            { name: "Jupiter", distance: 5.2 },
+            { name: "Saturn", distance: 9.54 },
+            { name: "Uranus", distance: 19.2 },
+            { name: "Neptune", distance: 30.1 },
+            { name: "Ceres", distance: 2.765 },
+            { name: "Pluto", distance: 39.481 },
+            { name: "Eris", distance: 67.67 },
+            { name: "Haumea", distance: 43 },
+            { name: "Makemake", distance: 45.346 },
+        ]
+
+
+        const fmt = d3.format(".2f")
+        const barScale = d3.scaleLinear()
+            .domain([0, d3.max(distances, d => d.distance)]) // input domain
+            .range([0, 600]) // output range
+
+
+        const chart = d3.select("body")
+            .append("div").attr("class", "bar-chart")
+            .style("height", () => distances.length * 22 + "px")
+
+        const entries = chart.selectAll("div").data(distances)
+            .enter().append("div")
+            .attr("class", "entry")
+            .style("top", (d, i) => i * 22 + "px")
+
+        entries.append("div").attr("class", "label category")
+            .text(d => d.name)
+
+        entries.append("div").attr("class", "bar")
+            .style("width", d => barScale(d.distance) + "px")
+
+        entries.append("div").attr("class", "label value")
+            .style("left", d => (barScale(d.distance) + 110) + "px")
+            .text(d => fmt(d.distance) + " AU")
+    </script>
+</body>
+
+</html>
